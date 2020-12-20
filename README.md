@@ -9,4 +9,4 @@ Then running `node bin/server.js` will start up the server.
 If an `UTTT_BACKEND_DSN` environment variable is set, it'll use Sentry error reporting.
 
 ## Usage
-The API is documented at [endpoints.md][./endpoints.md]
+The API is documented at [endpoints.md](./endpoints.md)
