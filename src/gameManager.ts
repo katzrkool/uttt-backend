@@ -9,7 +9,13 @@ import {Connection} from 'sockjs';
 
 import { createHandyClient, IHandyRedis } from 'handy-redis';
 
-const words = JSON.parse(readFileSync('./words.json', 'utf-8'));
+let words: string[];
+
+if (process.env.UTTT_BACKEND_WORDS_LOC !== undefined) {
+    words = JSON.parse(readFileSync(process.env.UTTT_BACKEND_WORDS_LOC, 'utf-8'));
+} else {
+    words = JSON.parse(readFileSync('./words.json', 'utf-8'));
+}
 
 enum MakeMoveStatus {
     Success = 'Success',
