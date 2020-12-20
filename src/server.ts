@@ -5,9 +5,9 @@ import * as Sentry from '@sentry/node';
 
 const gameManager = new GameManager();
 
-if (process.env.REACT_APP_UTTT_FRONTEND_DSN) {
+if (process.env.UTTT_FRONTEND_DSN) {
     Sentry.init({
-        dsn: process.env.REACT_APP_UTTT_BACKEND_DSN,
+        dsn: process.env.UTTT_BACKEND_DSN,
     });
 }
 
