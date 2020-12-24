@@ -74,13 +74,20 @@ async function processMessage(message: string, conn: sockjs.Connection): Promise
         }
         const openMatch = await gameManager.fetchOpenMatch();
         if (openMatch) {
-            const resp = await gameManager.joinMatch(openMatch, data.name, conn);
-            gameManager.appendToSubscriptions(openMatch, conn, resp.userID as string);
-            resp.msgID = data.msgID ?? 'unknown';
-            return resp;
+            return {
+                code: openMatch,
+                error: false,
+                msgID: data.msgID ?? 'unknown'
+            };
         } else {
             const resp = await gameManager.createMatch(data.name, false);
             gameManager.appendToSubscriptions(resp.code, conn, resp.userID as string);
+            
+            //if disconnect, leave matchmaking. If match has started at that point, it should be all good
+            conn.on('close', () => {
+                gameManager.stopMatchmake(resp.code, resp.userID, conn);
+            });
+            
             return {
                 code: resp.code,
                 error: false,

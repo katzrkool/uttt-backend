@@ -83,6 +83,12 @@ class GameManager {
             this.subscriptions[code] = this.subscriptions[code].filter((subscription: Subscription) => subscription.conn !== conn);
         }
         const match = JSON.parse(rawMatch);
+        
+        if (match.started) {
+            // if match has started, one can't leave matchmaking
+            return;
+        }
+        
         match.players = match.players.filter((player) => player.userID !== userID);
         if (match.players.length === 0) {
             await this.client.del(code);

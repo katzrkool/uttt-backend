@@ -237,7 +237,7 @@ Create a matchmaking session.
 
 ### Response Parameters
 * code: string. The game code. Can be sent to others to join.
-* userId: string. Should be sent with every request relating to this game. Identifies the client.
+* userId?: string. Should be sent with every request relating to this game. Identifies the client. **IMPORTANT:** if userID is not present, you'll need to call [joinMatch](#joinMatch) to join the match.
 
 #### Example
 ```json
