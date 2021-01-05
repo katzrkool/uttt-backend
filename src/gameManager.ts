@@ -125,7 +125,6 @@ class GameManager {
             visible,
             lastMove: 0,
             privateMatch,
-            subscribers: [],
             isXTurn: true,
             gameStart: 0,
             gameEnd: 0,
