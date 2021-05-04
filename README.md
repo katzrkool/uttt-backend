@@ -1,5 +1,5 @@
 # UTTT-Backend
-A websocket server that acts as a backend to [uttt-frontend](https://github.com/katzrkool/uttt-frontend).
+A websocket server that acts as a backend to [uttt-frontend](https://github.com/lkellar/uttt-frontend).
 
 ## Installation
 Only prerequisite is a running redis server. Then, just clone the repo, run `yarn; tsc;`.
